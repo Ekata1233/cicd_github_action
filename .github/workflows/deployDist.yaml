@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Get Code"
-        run:  |
-          echo "cloning repo...."
-          echo "${{toJson(github)}}"
-          echo clone https://github.com/${{github.repository}}.git
+        uses: actions/checkout@v7
+        # run:  |
+        #   echo "cloning repo...."
+        #   echo "${{toJson(github)}}"
+        #   echo clone https://github.com/${{github.repository}}.git
+      -  name: Install Dependencies
+         run: |
+           echo "Installing dependencies..."
+           npm ci
+      - name: Run Tests
+        run: npm run test
