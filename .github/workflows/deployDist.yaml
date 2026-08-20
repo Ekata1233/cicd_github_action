@@ -37,6 +37,7 @@ jobs:
         run: npm test
 
   build:
+    if: always()
     needs: greet
     runs-on: ubuntu-latest      
     steps:
